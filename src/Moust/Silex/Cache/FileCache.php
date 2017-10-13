@@ -78,7 +78,7 @@ class FileCache extends AbstractCache
      */
     protected function getFileName($key)
     {
-        return $this->_cacheDir . DIRECTORY_SEPARATOR . md5($key);
+        return $this->_cacheDir . DIRECTORY_SEPARATOR . md5($key) . '.json';
     }
 
     /**
