@@ -126,7 +126,7 @@ class FileCache extends AbstractCache
             return false;
         }
 
-        $content = unserialize(file_get_contents($filename));
+        $content = json_decode(file_get_contents($filename));
 
         if ($this->isContentAlive($content, $filename)) {
             return $content['data'];
@@ -144,7 +144,7 @@ class FileCache extends AbstractCache
     public function store($key, $var = null, $ttl = 0)
     {
         $content = array('data' => $var, 'ttl' => (int) $ttl);
-        return (bool) file_put_contents($this->getFileName($key), serialize($content));
+        return (bool) file_put_contents($this->getFileName($key), json_encode($content));
     }
 
     protected function isContentAlive($content, $filename)
