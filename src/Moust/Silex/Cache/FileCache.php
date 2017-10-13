@@ -126,7 +126,7 @@ class FileCache extends AbstractCache
             return false;
         }
 
-        $content = json_decode(file_get_contents($filename));
+        $content = json_decode(file_get_contents($filename), true);
 
         if ($this->isContentAlive($content, $filename)) {
             return $content['data'];
